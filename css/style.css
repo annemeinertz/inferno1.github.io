@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+
+}
+
+/* HØJRE SIDE_____________________________________*/
+
+#map {
+    position: fixed;
+    width: 50%;
+}
+
+#features {
+    width: 50%;
+    margin-left: 50%;
+    overflow-y: scroll;
+    background-color: #dac2a6;
+    color: #4e585a;
+}
+
+h3 {
+    font-size: 20px;
+    font-family: 'Cinzel', serif;
+}
+
+p {
+    font-family: 'Oswald', sans-serif;
+}
+
+section {
+    padding: 25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #da9454;
+    opacity: 0.25;
+    font-size: 13px;
+}
+
+section.active {
+    opacity: 1;
+}
+
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 500px;
+}
+
+/* VIDEO og BILLEDE___________________________________________________________*/
+
+.video {
+    box-shadow: 2px 2px;
+   
+}
+ #pic, #pic1 {
+     margin:0 10px 0 60px;
+     
+}
+
+/* POPUP MARKER_____________________________________________________*/
+
+#marker {
+    background-image: URL('https://i.pinimg.com/originals/ca/be/cb/cabecb6f00cbb2c46914ab9362bb2115.png');
+    background-size: cover;
+    width: 80px;
+    height: 80px;
+    border-radius: 65%;
+    cursor: pointer;
+}
+
+.mapboxgl-popup {
+    max-width: 200px;
+}
+
+#marker1 {
+    background-image: URL('http://media.arkansasonline.com/img/photos/2016/10/27/resized_250499-inferno3_36-22074_t630.JPG?30004eeab9fb5f824ff65e51d525728c55cf3980');
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 65%;
+    cursor: pointer;
+}
+
+#marker2 {
+    background-image: URL('http://www.thehistoryhub.com/wp-content/uploads/2017/01/Palazzo-Vecchio.jpg');
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 65%;
+    cursor: pointer;
+}
+
+#marker3 {
+    background-image: URL('https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/ITA_Firenze_Cattedrale_di_Santa_Maria_del_Fiore.jpg/1024px-ITA_Firenze_Cattedrale_di_Santa_Maria_del_Fiore.jpg');
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 65%;
+    cursor: pointer;
+}
+
+#marker4 {
+    background-image: URL('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Veneza47.jpg/300px-Veneza47.jpg');
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 65%;
+    cursor: pointer;
+}
+
+#marker5 {
+    background-image: URL('https://upload.wikimedia.org/wikipedia/en/0/07/Istanbul_University_logo.png');
+    background-size: cover;
+    width: 80px;
+    height: 80px;
+    border-radius: 65%;
+    cursor: pointer;
+}
+
+#marker6 {
+    background-image: URL('https://www.myinterestingfacts.com/wp-content/uploads/2014/03/Hagia-Sophia-facts.jpg');
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 65%;
+    cursor: pointer;
+}
+
+#marker7 {
+    background-image: URL('http://marcgcphotography.com/wp-content/uploads/2014/12/basilica-cistern-istanbul-1500x1000.jpg');
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 65%;
+    cursor: pointer;
+}

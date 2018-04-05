@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Fly to a location based on scroll position</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <link href='css/style.css' rel='stylesheet'/>
+<link href="https://fonts.googleapis.com/css?family=Cinzel|Oswald:300" rel="stylesheet">
+   
+</head>
+<body>
+
+<div id='map'></div>
+<div id='features'>
+    <section id='italy' class='active'>
+        <h3>Inferno</h3>
+        <p>Inferno er en amerikansk thriller fra år 2016. Den er baseret på Dan Brown's novelle af samme navn. Det er en efterfølger af "Da vinci mysteriet" og "Engle og dæmoner".<br> Tom Hanks spiller som i de to andre film hovedpersonen: Robert Langdon.  </p>
+    </section>
+    <section id='hospital'>
+        <br>
+        <h3>Ospedale San Giovanni di Dio</h3>
+        <p>Robert Langdon vågner op på et hospital i Florence med et hukommelsestab. Han er såret, og nogen har prøvet på at likvidere ham. Han husker tilsyneladene intet af, hvad der er sket de sidste 36 timer, og kan ikke engang huske, hvorfor han er endt i Italien.</p>
+    </section>
+    <section id='apartment'>
+        <h3>Siennas lejlighed</h3>
+        <p>Sammen med den unge kvindelige læge, Sienna flygter de fra hospitallet til hendes lejlighed. Robert Langdon befinder sig i et stort kaos og husker ikke, hvorfor at han har en mystisk genstand i hånden, eller hvorfor en kvinde i sort prøver på at dræbe ham. I den fortabte hukommelse findes der dog stadig små ærinderinger. Sammen kommer Sienna og langdon frem til, at genstanden er Sandro Botticellis overbliksmaleri af Helvede, og at der er påført bogstaver, som leder dem til, at det derfor må være et anagram. De flytger begge fra lejligheden, da agtenter og WHO er efter dem. </p>
+    </section>
+    <section id='palazzovecchio'>
+        <h3>Palazzo vecchio og Vasari Corridor</h3>
+        <p>I først omgang ledes Langdon og Sienna til Palazzo Vecchio med WHO og agenter lige i hælene af dem.<br> <iframe class="video" width="450" height="300" src="https://www.youtube.com/embed/DXuOmWut7Hc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </section>
+    <section id='cattedrale'>
+        <h3>Cattedrale di Santa Maria del Fiore</h3>
+        <p>Sienna og Langdon er på flugt fra Palazzo og tager videre til "Santa del Fiore" for at finde Dantes dødsmaske, som Langdon har glemt at han har stjålet. Her finder de ud af at næste spor er i Venedig</p>
+<img id="pic" src="images/mask.jpg" alt="dødsmaske" width="30%"   height="162px"/>
+<img id="pic1" src="images/maske.png" alt="dødsmaske" width="30%"/>
+    </section>
+    <section id='markuskirken'>
+        <h3>Skt. Mark's basilica</h3>
+        <p>Langdon og Sienna bliver opsøgt af Bouchard, som hævder at han er fra WHO og vil hjælpe dem. Han får dem fra Florence til Venedig, men inden togturen er omme får Langdon tilbageblik, og kan huske at det var Elizabeth fra WHO, som kontaktede ham. Sienna og Langdon flygter derfor videre på egen hånd indtil markuskirken samtidig med at de har Bouchard lige i hælene.<br>Sienna viser sig dog at have haft et forhold med Zobrist og forlader Langdon, da de er på flugt op fra kælderen i markuskirken. Langdon bliver fanget af Bochard og Sienna er på fri fod på vej til Istanbil for at udslippe virussen.</p>
+    </section>
+    <section id='istanbuluni'>
+        <h3>Istanbul universitet</h3>
+        <p>Sienna er på et universitet i Istanbul, hvor hun mødes med sin kilde, der skal hjælpe hende med at finde virussen.</p>
+    </section>
+    
+    <section id='hagiasophia'>
+        <h3>Hagia Sophia</h3>
+        <p>Det næste spor foregår ved Hagia Sophia, hvor de leder efter Dandolos grav, dog går de forgæves og må videre til det sunkne palads.
+        <br>
+        <br></p>
+    </section>
+    <section id='sunkenpalace'>
+        <h3>The sunken palace</h3>
+        <p>Langdon og WHO må videre til det sunkne palads, hvor Sienna har tænkt sig at udslippe virsussen.</p>
+        <iframe class="video" width="450" height="300" src="https://www.youtube.com/embed/9EOazpvA7-U" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </section>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uZW1laW5lcnR6IiwiYSI6ImNqZmpkMTZmYTQ3cjQycW1tMTN3MHp6YWoifQ.je0nMeVyeVjZcXbzibbAjw';
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/annemeinertz/cjfkqkwicgt1e2ro75vtgy60z',
+    center: [14.278,41.964],
+    zoom: 5,
+    bearing: 10,
+    pitch: 10,
+});
+    
+<!-- Fly to-->
+var chapters = {
+    'italy': {
+        bearing: 27,
+        center: [14.278,41.964],
+        zoom: 5,
+        pitch: 10,
+    },
+     'hospital': {
+        bearing: 27,
+        center: [11.205,43.758],
+        zoom: 15.5,
+        pitch: 20
+    },
+     
+    'apartment': {
+        duration: 6000,
+        center: [11.250270,43.77210],
+        bearing: 27,
+        zoom: 18.5,
+        pitch: 30,
+    },
+    'palazzovecchio': {
+        bearing: 90,
+        center: [11.25703,43.76908],
+        zoom: 16.8,
+        speed: 0.6,
+        pitch: 70
+    },
+     'cattedrale': {
+        bearing: 90,
+        center: [11.25713,43.77288],
+        zoom: 16.8,
+        speed: 0.6,
+        pitch: 70
+    },
+    'markuskirken': {
+        bearing: 45,
+        center: [12.34000,45.43457],
+        zoom: 17.3,
+        pitch: 70,
+        speed: 0.6,
+    },
+    'istanbuluni': {
+        bearing: 180,
+        center: [28.96384,41.01379],
+        zoom: 15.6
+    },
+    'hagiasophia': {
+         bearing: 90,
+        center: [28.97940,41.00845],
+        zoom: 17.3,
+        pitch: 60,
+    },
+    'sunkenpalace': {
+        bearing: 90,
+        center: [28.98095,41.01130],
+        zoom: 17.3,
+        pitch: 70,
+    }
+};
+
+// On every scroll event, check which element is on screen
+window.onscroll = function() {
+    var chapterNames = Object.keys(chapters);
+    for (var i = 0; i < chapterNames.length; i++) {
+        var chapterName = chapterNames[i];
+        if (isElementOnScreen(chapterName)) {
+            setActiveChapter(chapterName);
+            break;
+        }
+    }
+};
+
+var activeChapterName = 'italy';
+function setActiveChapter(chapterName) {
+    if (chapterName === activeChapterName) return;
+
+    map.flyTo(chapters[chapterName]);
+
+    document.getElementById(chapterName).setAttribute('class', 'active');
+    document.getElementById(activeChapterName).setAttribute('class', '');
+
+    activeChapterName = chapterName;
+}
+
+function isElementOnScreen(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+}
+<!--MARKUSKIRKEN______________________________________________________________________________________________________________-->
+<!--hospital____________________________________________________________________________-->
+var monument = [11.205,43.758];
+    <!--lejlighed____________________________________________________________________________-->
+var monument1 = [11.250270,43.77210];
+    <!-- palazzo____________________________________________________________________________-->
+    var monument2 = [11.25703,43.76908];
+    <!--catedrahl____________________________________________________________________________-->
+    var monument3 = [11.25713,43.77288];
+    <!-- markuskirken____________________________________________________________________________-->
+ var monument4 = [12.34000,45.43457];
+<!-- istanbul uni____________________________________________________________________________-->
+    var monument5 = [28.96384,41.01379];
+   <!-- hagiasophia____________________________________________________________________________-->
+    var monument6 = [28.97940,41.00845];
+    <!--sunkenpalace____________________________________________________________________________-->
+     var monument7 = [28.98095,41.01130];
+    
+// create the popup
+var popup = new mapboxgl.Popup()
+    .setText('Construction on the Washington Monument began in 1848.');
+<!--hospital____________________________________________________________________________-->
+// create DOM element for the marker
+var el = document.createElement('div');
+el.id = 'marker';
+   
+
+// create the marker
+new mapboxgl.Marker(el)
+    .setLngLat(monument)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);
+  <!--lejlighed-->  
+var el1 = document.createElement('div');
+el1.id = 'marker1';
+   
+
+// create the marker
+new mapboxgl.Marker(el1)
+    .setLngLat(monument1)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);
+    <!-- palazzo____________________________________________________________________________-->
+    var el2 = document.createElement('div');
+el2.id = 'marker2';
+   
+
+// create the marker
+new mapboxgl.Marker(el2)
+    .setLngLat(monument2)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);
+    
+    <!--vasari____________________________________________________________________________-->
+     var el3 = document.createElement('div');
+el3.id = 'marker3';
+   
+
+// create the marker
+new mapboxgl.Marker(el3)
+    .setLngLat(monument3)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);
+    
+     <!-- markuskirken____________________________________________________________________________-->
+         var el4 = document.createElement('div');
+el4.id = 'marker4';
+   
+
+// create the marker
+new mapboxgl.Marker(el4)
+    .setLngLat(monument4)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);
+    <!-- Istanbul uni_______________________________________________-->
+   
+    var el5 = document.createElement('div');
+el5.id = 'marker5';
+   
+
+// create the marker
+new mapboxgl.Marker(el5)
+    .setLngLat(monument5)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);
+    
+    <!-- hagiasophia____________________________________________________________________________-->
+    var el6 = document.createElement('div');
+el6.id = 'marker6';
+   
+
+// create the marker
+new mapboxgl.Marker(el6)
+    .setLngLat(monument6)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);
+ <!--sunkenpalace____________________________________________________________________________-->   
+     var el7 = document.createElement('div');
+el7.id = 'marker7';
+   
+
+// create the marker
+new mapboxgl.Marker(el7)
+    .setLngLat(monument7)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);
+</script>
+    
+</body>
+</html>
